@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import OrderSummary from "../components/OrderSummary";
-import { getCart } from "../utils/cart";
+import { getCart, clearCart } from "../utils/cart";
 import Loader from "../components/Loader";
+import { toast } from "react-toastify";
 
 function Cart() {
 
@@ -33,6 +34,22 @@ function Cart() {
         return () => window.removeEventListener("cartUpdated", loadCart);
 
     }, []);
+
+    const handleOrder = () => {
+
+        if (cartProducts.length === 0) {
+            toast.error("Cart is empty!");
+            return;
+        }
+
+         toast.success("Order placed successfully!");
+
+        clearCart();
+
+        setCartProducts([]);
+        setTotal(0);
+
+    };
 
     useEffect(() => {
 
@@ -84,20 +101,26 @@ function Cart() {
                     <OrderSummary
                         total={total}
                         items={cartProducts.length}
+                        onOrder={handleOrder}
                     />
 
                 </div>
 
             </div>
 
-            <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-lg p-4 flex justify-between items-center">
+            {/* MOBILE ORDER BAR */}
+
+            <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 shadow-lg p-4 flex justify-between items-center z-50">
 
                 <div>
                     <p className="text-sm text-gray-500">Total</p>
                     <p className="font-bold text-blue-600">${total.toFixed(2)}</p>
                 </div>
 
-                <button className="bg-green-600 text-white px-6 py-2 rounded-lg">
+                <button
+                    className="bg-green-600 text-white px-6 py-2 rounded-lg"
+                    onClick={handleOrder}
+                >
                     Order Now
                 </button>
 

@@ -45,3 +45,9 @@ export const increaseQty = (id) => {
     localStorage.setItem("cart", JSON.stringify(cart));
     window.dispatchEvent(new Event("cartUpdated"));
 };
+
+export const clearCart = () => {
+  localStorage.removeItem("cart");
+
+  window.dispatchEvent(new Event("cartUpdated"));
+};
