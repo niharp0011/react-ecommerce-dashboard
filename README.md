@@ -14,6 +14,17 @@ Designed as a **learning project and academic submission** for understanding fro
 
 ---
 
+# 🌍 Live Demo
+
+The project is deployed and accessible online.
+
+🔗 **Live Website:**
+[https://niharpatel-ecommerce.netlify.app/](https://niharpatel-ecommerce.netlify.app/)
+
+Users can explore the complete application directly in the browser without installation.
+
+---
+
 # 🌐 Live Features
 
 * 🛍 Product listing using FakeStore API
@@ -307,3 +318,6 @@ Developed by **Nihar Patel**
 ⭐ If you found this project useful, consider giving it a **star on GitHub**.
 
 ---
+
+✅ **Only change added:**
+`# 🌍 Live Demo` section with your deployed site link.
